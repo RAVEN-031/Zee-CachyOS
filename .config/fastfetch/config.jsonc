@@ -1,0 +1,151 @@
+
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": 
+  {
+    "source": "~/ASCII_Arts/ribbon2.txt",
+    "color": 
+    {
+      "1": "#ff31b4"
+    },
+    "padding": {"top": 1}
+  },
+  "display": {"separator": " "},
+  "modules": 
+  [
+    {
+      "type": "title",
+      "keywidth": 8
+    },
+    {
+      "type": "custom",
+      "format": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"},
+    {
+      "type": "os",
+      "key": "╭ ",
+      "keyColor": "#FF0909"
+    },
+    {
+      "type": "kernel",
+      "key": "├ ",
+      "keyColor": "#FF0909"
+    },
+    {
+      "type": "packages",
+      "key": "├󰏖 ",
+      "keyColor": "#FF0909"
+    },
+    {
+      "type": "command",
+      "key": "╰ ",
+      "keyColor": "#FF0909",
+      "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+    },
+    "break",
+    //{
+    //  "type": "wm",
+    //  "key": "╭ ",
+    //  "keyColor": "#DC5F00"
+    //},
+    //{
+    //  "type": "wmtheme",
+    //  "key": "├󰉼 ",
+    //  "keyColor": "#DC5F00"
+    //},
+    //{
+    //  "type": "icons",
+    //  "key": "├󰀻 ",
+    //  "keyColor": "#DC5F00"
+    //},
+    //{
+    //  "type": "cursor",
+    //  "key": "╰ ",
+    //  "keyColor": "#DC5F00"
+    //},
+    //"break",
+    {
+      "type": "terminal",
+      "key": "╭ ",
+      "keyColor": "#DC5F00"
+    },
+    {
+      "type": "shell",
+      "key": "├ ",
+      "keyColor": "#DC5F00"
+    },
+    {
+      "type": "custom",
+      "key": "╰ ",
+      "format": "FiraMono Nerd Font",
+      "keyColor": "#DC5F00" 
+    },
+    "break",
+    {
+      "type": "host",
+      "key": "╭ ",
+      "keyColor": "#007DDC"
+    },
+    {
+      "type": "cpu",
+      "key": "├ ",
+      "keyColor": "#007DDC"
+    },
+    {
+      "type": "gpu",
+      "key": "├ ",
+      "format": "{2}",
+      "keyColor": "#007DDC"
+    },
+    {
+      "type": "display",
+      "key": "├󰍹 ",
+      "keyColor": "#007DDC",
+      "compactType": "original-with-refresh-rate"
+    },
+    {
+      "type": "memory",
+      "key": "├ ",
+      "keyColor": "#007DDC",
+      "percent": 
+        {
+          "type": 3
+        }
+    },
+    {
+      "type": "disk",
+      "key": "├ ",
+      "keyColor": "#007DDC",
+      "percent": 
+        {
+          "type": 3
+        }
+    },
+    {
+      "type": "uptime",
+      "key": "╰󰅐 ",
+      "keyColor": "#007DDC"
+    },
+    "break",
+    /*
+    {
+      "type": "sound",
+      "key": "╭ ",
+      "format": "{2}",
+      "keyColor": "#DC5F00"
+    },
+    {
+      "type": "media",
+      "key": "╰ ",
+      "keyColor": "#DC5F00"
+    },
+    */
+    {
+      "type": "custom",
+      "format": "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    },
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;255;49;180m        \u001b[31m         \u001b[38;2;220;95;0m         \u001b[38;2;0;125;220m"
+    }
+  ]
+}
