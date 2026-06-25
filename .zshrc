@@ -83,6 +83,8 @@ alias diff='diff --color=auto'
 alias ip='ip --color=auto'
 
 alias ff='fastfetch'
+alias clock='tty-clock -c -C 5 -s -b'
+
 alias c='clear'
 alias q='exit'
 
@@ -107,22 +109,7 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
     eval "$(ssh-agent -s)"
 fi
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/RAVEN/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/RAVEN/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/RAVEN/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/RAVEN/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-# faaaah on error setup
+# Error sound setup
 
 autoload -Uz add-zsh-hook
 
