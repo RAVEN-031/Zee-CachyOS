@@ -7,7 +7,7 @@ endif
 call plug#begin()
 
 " List your plugins here
-Plug 'catppuccin/vim', { 'as': 'catppuccin' }
+Plug 'RAVEN-031/catppuccin-vim', { 'as': 'catppuccin', 'branch': 'main' }
 Plug 'vim-airline/vim-airline'
 
 call plug#end()
@@ -24,13 +24,9 @@ set nobackup
 set noswapfile
 set noundofile
 
-syntax on
-
 set termguicolors
 
 colorscheme catppuccin_mocha
-hi Normal guibg=NONE " Sets background to transparent so I can see my yuri <3
-
 let g:airline_theme = 'catppuccin_mocha'
 
 " Force separators because the defaults are none for some reason

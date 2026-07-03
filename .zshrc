@@ -92,8 +92,7 @@ alias wa='whatscli'
 alias rtodo='cat ~/Todo.txt'
 alias wtodo='nano ~/Todo.txt'
 
-alias wcmd='cmd.exe /c'
-alias wcode='cmd.exe /c code'
+alias raven='distrobox enter kali-raven'
 
 # fzf color scheme
 export FZF_DEFAULT_OPTS="

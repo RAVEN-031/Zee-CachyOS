@@ -36,7 +36,7 @@ hl.monitor({
 -- Set programs that you use
 local terminal    = "kitty"
 local fileManager = "dolphin"
-local menu        = "hyprlauncher"
+local menu        = "rofi -show drun"
 
 
 -------------------
@@ -57,8 +57,9 @@ local menu        = "hyprlauncher"
 hl.on("hyprland.start", function ()
 	hl.exec_cmd("waypaper --restore")
 	hl.exec_cmd("waybar")
-	hl.exec_cmd("youtube-music-desktop-app", {workspace = "special:music silent"})
 	hl.exec_cmd("/home/zee/AppImages/Vesktop-1.6.5.AppImage --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan", {workspace = "special:discord silent"})
+	hl.exec_cmd("hyprpm reload")
+	hl.exec_cmd("systemctl --user enable --now hyprpolkitagent.service")
 end)
 
 -------------------------------
@@ -193,6 +194,7 @@ hl.animation({ leaf = "zoomFactor",    enabled = true,  speed = 7,    bezier = "
 -- See https://wiki.hypr.land/Configuring/Layouts/Dwindle-Layout/ for more
 hl.config({
     dwindle = {
+		force_split = 2,
         preserve_split = true, -- You probably want this
     },
 })
@@ -267,9 +269,10 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("kitty distrobox enter kali-raven"))
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
-hl.bind(mainMod .. " + escape", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"))
+hl.bind(mainMod .. " + escape", hl.dsp.exec_cmd("wlogout"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd(menu))
@@ -412,7 +415,10 @@ hl.window_rule({
 	match = { class = "^(vesktop)$"},
 	workspace = "special:discord silent"
 })
-
+hl.window_rule({
+	match = { class = "^(YouTube Music Desktop App)$"},
+	workspace = "special:music silent"
+})
 -- Layer rules also return a handle.
 -- local overlayLayerRule = hl.layer_rule({
 --     name  = "no-anim-overlay",
