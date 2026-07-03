@@ -26,7 +26,7 @@ autoload -Uz compinit && compinit
 zinit cdreplay -q
 
 # activate omp
-eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/catppuccin.omp.json)"
+eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/catppuccin_Zee.omp.json)"
 
 # configure key keybindings
 bindkey -e                                        # emacs key bindings
