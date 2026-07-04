@@ -5,7 +5,8 @@
   {
 	"type" : "kitty-direct",
     "source" : "~/ASCII_Arts/zee-bow.png",
-	"padding" : { "top" : 3}
+	"padding" : { "top" : 3},
+	"width" : 31
   },
   "display": {"separator": " "},
   "modules": 

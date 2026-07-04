@@ -25,7 +25,7 @@ hl.monitor({
     output   = "",
     mode     = "1920x1200@60",
     position = "auto",
-    scale    = "1.0",
+    scale    = "1.07",
 })
 
 
@@ -37,6 +37,7 @@ hl.monitor({
 local terminal    = "kitty"
 local fileManager = "dolphin"
 local menu        = "rofi -show drun"
+local browser     = "firefox"
 
 
 -------------------
@@ -59,7 +60,7 @@ hl.on("hyprland.start", function ()
 	hl.exec_cmd("waybar")
 	hl.exec_cmd("/home/zee/AppImages/Vesktop-1.6.5.AppImage --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan", {workspace = "special:discord silent"})
 	hl.exec_cmd("hyprpm reload")
-	hl.exec_cmd("systemctl --user enable --now hyprpolkitagent.service")
+	hl.exec_cmd("systemctl --user enable --now hyprpolkitagent")
 end)
 
 -------------------------------
@@ -270,6 +271,7 @@ local mainMod = "SUPER" -- Sets "Windows" key as main modifier
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("kitty distrobox enter kali-raven"))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
 hl.bind(mainMod .. " + escape", hl.dsp.exec_cmd("wlogout"))
