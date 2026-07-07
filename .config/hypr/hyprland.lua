@@ -56,8 +56,7 @@ local browser     = "firefox"
 -- end)
 
 hl.on("hyprland.start", function ()
-	hl.exec_cmd("waypaper --restore")
-	hl.exec_cmd("waybar")
+	hl.exec_cmd("noctalia")
 	hl.exec_cmd("/home/zee/AppImages/Vesktop-1.6.5.AppImage --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan", {workspace = "special:discord silent"})
 	hl.exec_cmd("hyprpm reload")
 	hl.exec_cmd("systemctl --user enable --now hyprpolkitagent")
@@ -267,6 +266,11 @@ hl.device({
 ---------------------
 
 local mainMod = "SUPER" -- Sets "Windows" key as main modifier
+local ipc = "noctalia msg"
+
+-- Noctalia keybinds
+hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd(ipc .. " panel-toggle launcher"))
+hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(ipc .. " panel-toggle control-center"))
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
@@ -275,10 +279,9 @@ hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("kitty btop"))
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
-hl.bind(mainMod .. " + escape", hl.dsp.exec_cmd("wlogout"))
+hl.bind(mainMod .. " + escape", hl.dsp.exec_cmd(ipc .. " panel-toggle session"))
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + F", hl.dsp.window.float({ action = "toggle" }))
-hl.bind(mainMod .. " + TAB", hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + L", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + SHIFT + F ", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle"}))
@@ -438,3 +441,6 @@ hl.window_rule({
     move  = "20 monitor_h-120",
     float = true,
 })
+
+-- For Noctalia Color templates
+require("noctalia").apply_theme()
