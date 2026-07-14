@@ -83,6 +83,7 @@ alias diff='diff --color=auto'
 alias ip='ip --color=auto'
 
 alias ff='fastfetch'
+alias speedtest='speedtest --secure'
 alias clock='tty-clock -c -C 5 -s -b'
 
 alias c='clear'
@@ -93,6 +94,13 @@ alias rtodo='cat ~/Todo.txt'
 alias wtodo='nano ~/Todo.txt'
 
 alias raven='distrobox enter kali-raven'
+
+
+open() {
+    local target="${1:-.}"
+    xdg-open "$target" >/dev/null 2>&1 &
+    disown %+$  # Tells the shell to forget about this background job immediately
+}
 
 # fzf color scheme
 export FZF_DEFAULT_OPTS="
