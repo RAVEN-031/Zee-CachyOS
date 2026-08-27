@@ -35,7 +35,7 @@ hl.monitor({
 
 -- Set programs that you use
 local terminal    = "kitty"
-local fileManager = "dolphin"
+local fileManager = "hyprfm"
 local menu        = "rofi -show drun"
 local browser     = "firefox"
 
@@ -57,9 +57,10 @@ local browser     = "firefox"
 
 hl.on("hyprland.start", function ()
 	hl.exec_cmd("noctalia")
-	hl.exec_cmd("/home/zee/AppImages/Vesktop-1.6.5.AppImage --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan", {workspace = "special:discord silent"})
 	hl.exec_cmd("hyprpm reload")
 	hl.exec_cmd("systemctl --user enable --now hyprpolkitagent")
+	hl.exec_cmd("vesktop", {workspace = "special:discord silent"})
+	hl.exec_cmd("gnome-keyring-daemon --start --components=secret")
 end)
 
 -------------------------------
@@ -70,6 +71,7 @@ end)
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("XDG_MENU_PREFIX", "plasma-")
 
 
 -----------------------
@@ -109,7 +111,7 @@ hl.config({
         },
 
         -- Set to true to enable resizing windows by clicking and dragging on borders and gaps
-        resize_on_border = false,
+        resize_on_border = true,
 
         -- Please see https://wiki.hypr.land/Configuring/Advanced-and-Cool/Tearing/ before you turn this on
         allow_tearing = false,
@@ -221,6 +223,7 @@ hl.config({
     misc = {
         force_default_wallpaper = -1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
         disable_hyprland_logo   = true, -- If true disables the random hyprland logo / anime girl background. :(
+		middle_click_paste      = false
     },
 })
 
@@ -307,6 +310,8 @@ hl.bind(mainMod .. " + D", hl.dsp.workspace.toggle_special("discord"))
 hl.bind(mainMod .. " + SHIFT + D", hl.dsp.window.move({ workspace = "special:discord"}))
 hl.bind(mainMod .. " + M", hl.dsp.workspace.toggle_special("music"))
 hl.bind(mainMod .. " + SHIFT + M", hl.dsp.window.move({ workspace = "special:music"}))
+hl.bind(mainMod .. " + N", hl.dsp.workspace.toggle_special("note"))
+hl.bind(mainMod .. " + SHIFT + N", hl.dsp.window.move({ workspace = "special:note"}))
 
 -- Scroll through existing workspaces with mainMod + scroll
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
@@ -418,6 +423,10 @@ hl.window_rule({
     no_focus = true,
 })
 hl.window_rule({
+	match = { class = "^(thunar)$"},
+	opacity = 0.85, 0.75
+})
+hl.window_rule({
 	match = { class = "^(vesktop)$"},
 	workspace = "special:discord silent"
 })
@@ -442,5 +451,3 @@ hl.window_rule({
     float = true,
 })
 
--- For Noctalia Color templates
-require("noctalia").apply_theme()

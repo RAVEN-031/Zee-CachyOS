@@ -70,11 +70,11 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 
 # aliases
-alias l='eza --color=always --long --git --no-filesize --icons=automatic --no-time --no-user --no-permissions' # better ls
-alias ll='eza -l --icons=automatic'
-alias la='eza -A --icons=automatic'
+alias l='eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions' # better ls
+alias ll='eza -l --icons=auto'
+alias la='eza -A --icons=auto'
 alias lla='eza -lA --icons=always --git'
-alias lt='eza -T --icons=automatic'
+alias lt='eza -T --icons=auto'
 
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
