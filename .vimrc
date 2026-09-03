@@ -9,8 +9,12 @@ call plug#begin()
 " List your plugins here
 Plug 'RAVEN-031/catppuccin-vim', { 'as': 'catppuccin', 'branch': 'main' }
 Plug 'vim-airline/vim-airline'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
+
+" Sets autocomplete to Control + Space for Coc.vim
+inoremap <silent><expr> <C-@> coc#pum#visible() ? coc#pum#confirm() : "\<C-@>"
 
 set number
 set wrap
@@ -36,3 +40,5 @@ let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 
 set clipboard=unnamedplus
+
+hi Normal guifg=grey guibg=black

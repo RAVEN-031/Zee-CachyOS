@@ -61,6 +61,7 @@ hl.on("hyprland.start", function ()
 	hl.exec_cmd("systemctl --user enable --now hyprpolkitagent")
 	hl.exec_cmd("vesktop", {workspace = "special:discord silent"})
 	hl.exec_cmd("gnome-keyring-daemon --start --components=secret")
+	hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")
 end)
 
 -------------------------------
