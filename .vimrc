@@ -41,4 +41,3 @@ let g:airline_right_alt_sep = ''
 
 set clipboard=unnamedplus
 
-hi Normal guifg=grey guibg=black
