@@ -1,0 +1,224 @@
+config_version = 13
+
+[bar]
+order = [ "zee", "calendarbar", "default" ]
+
+    [bar.calendarbar]
+    center = [ "date" ]
+    enabled = true
+    end = []
+    margin_ends = 773
+    scale = 1.2500000111758709
+    start = []
+    thickness = 20
+
+    [bar.default]
+    enabled = false
+    end = [
+        "media",
+        "tray",
+        "notifications",
+        "clipboard",
+        "network",
+        "bluetooth",
+        "volume",
+        "brightness",
+        "battery",
+        "control-center",
+        "session",
+        "control-center"
+    ]
+
+    [bar.zee]
+    background_opacity = 0.84999998100101948
+    capsule = true
+    enabled = true
+    end = [ "widget", "tray", "notifications", "network", "bluetooth", "volume", "brightness", "battery" ]
+    font_family = "Red Hat Text"
+    font_weight = 700
+    margin_ends = 132
+    scale = 1.1000000089406967
+    start = [ "wallpaper", "weather", "workspaces", "media", "clipboard", "screenshot" ]
+    widget_spacing = 13
+
+[battery]
+warning_threshold = 20
+
+[calendar]
+enabled = true
+refresh_minutes = 10
+
+    [calendar.account.zee_calendar]
+    color = "primary"
+    name = "Zee's Calendar"
+    type = "google"
+
+[location]
+auto_locate = true
+
+[lockscreen]
+blur_intensity = 0.24999999441206455
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-0000000000000001", "lockscreen-widget-0000000000000002" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 128.0
+    box_width = 810.0
+    cx = 900.0
+    cy = 690.5
+    output = "eDP-1"
+    placement_height = 1125.0
+    placement_width = 1800.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = false
+        show_media = false
+        show_session_buttons = true
+        show_unlock_hint = false
+        show_weather = false
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 112.0
+    box_width = 336.0
+    cx = 900.0
+    cy = 442.5
+    output = "eDP-1"
+    placement_height = 1125.0
+    placement_width = 1800.0
+    rotation = -0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background = true
+        background_color = "surface_variant"
+        background_opacity = 1.0
+        background_padding = 6
+        background_radius = 18
+        center_text = true
+        clock_style = "digital"
+        color = "primary"
+        format = "{:%H:%M:%S\\n%A, %d %B %Y}"
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000002]
+    box_height = 112.0
+    box_width = 128.0
+    cx = 756.0
+    cy = 402.5
+    output = "eDP-1"
+    placement_height = 1125.0
+    placement_width = 1800.0
+    rotation = 0.0
+    type = "sticker"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000002.settings]
+        background = false
+        background_opacity = 0.0
+        image_path = "/home/zee/ASCII_Arts/zee-bow.png"
+        opacity = 1.0
+
+[plugins]
+enabled = [ "oldirtty/color_picker" ]
+
+[shell]
+avatar_path = "/home/zee/Pictures/zee.jpg"
+screen_time_enabled = true
+telemetry_enabled = true
+
+    [shell.launcher]
+    app_grid = true
+    categories = false
+
+    [shell.panel]
+    session_position = "center"
+
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    command = "command -v hyprshutdown >/dev/null 2>&1 && hyprshutdown || hyprctl dispatch 'hl.dsp.exit()'"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
+
+[theme]
+builtin = "Noctalia"
+community_palette = "Oxocarbon"
+source = "wallpaper"
+wallpaper_scheme = "faithful"
+
+[wallpaper]
+directory = "/home/zee/Pictures/Wallpaper"
+
+    [wallpaper.default]
+    path = "/home/zee/Pictures/Wallpaper/mzen drown.jpg"
+
+    [wallpaper.last]
+    path = "/home/zee/Pictures/Wallpaper/mzen drown.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/zee/Pictures/Wallpaper/mzen drown.jpg"
+
+[widget.clock]
+anchor = true
+format = "{:%H:%M:%S}"
+
+[widget.date]
+format = "{:%A, %d %B}"
+
+[widget.media]
+max_length = 290
+
+[widget.tray]
+drawer = true
+
+[widget.weather]
+show_condition = false
+
+[widget.widget]
+type = "oldirtty/color_picker:widget"
