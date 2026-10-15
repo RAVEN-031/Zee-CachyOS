@@ -70,7 +70,7 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 
 # aliases
-alias l='eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions' # better ls
+alias l='eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions' # better ls
 alias ll='eza -l --icons=auto'
 alias la='eza -A --icons=auto'
 alias lla='eza -lA --icons=always --git'
@@ -93,13 +93,28 @@ alias wa='whatscli'
 alias rtodo='cat ~/Todo.txt'
 alias wtodo='nano ~/Todo.txt'
 
-alias raven='distrobox enter kali-raven'
+alias raven='distrobox enter kali-raven --no-workdir'
+alias set-ssh='eval `ssh-agent -s`; ssh-add .ssh/github'
 
+alias gay='agy --dangerously-skip-permissions'
+
+# yazi wrapper
+function y() {
+	local tmp cwd; tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd" || builtin true
+	command rm -f -- "$tmp"
+}
+ssh-github() {
+	eval "$(ssh-agent -s)"
+	ssh-add ~/.ssh/github
+}
 
 open() {
     local target="${1:-.}"
     xdg-open "$target" >/dev/null 2>&1 &
-    disown %+$  # Tells the shell to forget about this background job immediately
+    disown %+$  # Tells the shell to forget about the j*b
 }
 
 # fzf color scheme
@@ -128,3 +143,10 @@ add-zsh-hook precmd error_sound
 # On startup runs
 clear
 ff
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/zee/.local/bin:$PATH"
+
+# opencode
+export PATH=/home/zee/.opencode/bin:$PATH

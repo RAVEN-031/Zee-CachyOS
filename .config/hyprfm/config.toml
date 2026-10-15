@@ -17,11 +17,14 @@ transparency_level = 1.0
 [context_menu]
 
 [general]
+dark_theme = 'catppuccin-mocha'
 default_view = 'grid'
 dependency_startup_check = true
-font_family = ''
+font_family = 'Adwaita Sans'
 icon_theme = 'Adwaita'
+light_theme = 'catppuccin-latte'
 remember_sort_per_folder = true
+right_click_to_edit_path = true
 show_hidden = false
 sort_ascending = true
 sort_by = 'name'

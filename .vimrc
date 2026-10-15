@@ -10,7 +10,7 @@ call plug#begin()
 Plug 'RAVEN-031/catppuccin-vim', { 'as': 'catppuccin', 'branch': 'main' }
 Plug 'vim-airline/vim-airline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
+Plug 'lervag/vimtex'
 call plug#end()
 
 " Sets autocomplete to Control + Space for Coc.vim
@@ -40,4 +40,19 @@ let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
 
 set clipboard=unnamedplus
+
+if has('gui_running')
+    " In Gvim: Force a solid pure black background
+    hi Normal guibg=#000000 
+else
+    " In Terminal Vim: Force transparency by clearing backgrounds
+    hi Normal guibg=NONE ctermbg=NONE
+    hi NonText guibg=NONE ctermbg=NONE
+    hi SignColumn guibg=NONE ctermbg=NONE
+    hi EndOfBuffer guibg=NONE ctermbg=NONE
+endif
+
+filetype plugin indent on
+let g:tex_flavor = 'latex'
+let g:coc_filetype_map = {'tex': 'latex'}
 

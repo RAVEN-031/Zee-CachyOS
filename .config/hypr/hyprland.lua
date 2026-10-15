@@ -22,11 +22,18 @@
 
 -- See https://wiki.hypr.land/Configuring/Basics/Monitors/
 hl.monitor({
-    output   = "",
+    output   = "eDP-1",
     mode     = "1920x1200@60",
     position = "auto",
     scale    = "1.07",
 })
+hl.monitor({
+	output   = "",
+	mode     = "preferred",
+	position = "auto-up",
+	scale    = "1.00"
+})
+
 
 
 ---------------------
@@ -57,10 +64,11 @@ local browser     = "firefox"
 
 hl.on("hyprland.start", function ()
 	hl.exec_cmd("noctalia")
+	hl.exec_cmd("elecwhat")
 	hl.exec_cmd("hyprpm reload")
 	hl.exec_cmd("systemctl --user enable --now hyprpolkitagent")
 	hl.exec_cmd("vesktop", {workspace = "special:discord silent"})
-	hl.exec_cmd("gnome-keyring-daemon --start --components=secret")
+	hl.exec_cmd("gnome-keyring-daemon --start")
 	hl.exec_cmd("gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'")
 end)
 
@@ -159,13 +167,13 @@ hl.curve("almostLinear",   { type = "bezier", points = { {0.5, 0.5},   {0.75, 1}
 hl.curve("quick",          { type = "bezier", points = { {0.15, 0},    {0.1, 1}     } })
 
 -- Default springs
-hl.curve("easy",           { type = "spring", mass = 1, stiffness = 71.2633, dampening = 15.8273644 })
+hl.curve("easy",           { type = "spring", mass = 1, stiffness = 140.2633, dampening = 20.8273644 })
 
 hl.animation({ leaf = "global",        enabled = true,  speed = 10,   bezier = "default" })
 hl.animation({ leaf = "border",        enabled = true,  speed = 5.39, bezier = "easeOutQuint" })
 hl.animation({ leaf = "windows",       enabled = true,  speed = 4.79, spring = "easy" })
-hl.animation({ leaf = "windowsIn",     enabled = true,  speed = 4.1,  spring = "easy",         style = "popin 87%" })
-hl.animation({ leaf = "windowsOut",    enabled = true,  speed = 1.49, bezier = "linear",       style = "popin 87%" })
+hl.animation({ leaf = "windowsIn",     enabled = true,  speed = 5.1,  spring = "easy",         style = "popin 87%" })
+hl.animation({ leaf = "windowsOut",    enabled = true,  speed = 5.49, bezier = "linear",       style = "popin 87%" })
 hl.animation({ leaf = "fadeIn",        enabled = true,  speed = 1.73, bezier = "almostLinear" })
 hl.animation({ leaf = "fadeOut",       enabled = true,  speed = 1.46, bezier = "almostLinear" })
 hl.animation({ leaf = "fade",          enabled = true,  speed = 3.03, bezier = "quick" })
@@ -281,7 +289,7 @@ hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(ipc .. " panel-toggle control-center"
 
 -- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
-hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("kitty distrobox enter kali-raven"))
+hl.bind(mainMod .. " + R", hl.dsp.exec_cmd("kitty distrobox enter kali-raven --no-workdir"))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("kitty btop"))
 local closeWindowBind = hl.bind(mainMod .. " + Q", hl.dsp.window.close())
@@ -339,7 +347,7 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
--- HyprCapture bindings
+-- Screenshot bindings
 hl.bind("Print", hl.dsp.exec_cmd("noctalia msg screenshot-fullscreen"))
 hl.bind("SUPER + SHIFT + Print", hl.dsp.exec_cmd("noctalia msg screenshot-region"))
 
@@ -384,6 +392,10 @@ hl.window_rule({
 })
 hl.window_rule({
 	match = { class = "^(vesktop)$"},
+	workspace = "special:discord silent"
+})
+hl.window_rule({
+	match = { class = "^(elecwhat)$"},
 	workspace = "special:discord silent"
 })
 hl.window_rule({

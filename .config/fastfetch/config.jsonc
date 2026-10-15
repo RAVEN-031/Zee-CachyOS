@@ -4,7 +4,7 @@
   "logo": 
   {
 	"type" : "kitty-direct",
-    "source" : "~/ASCII_Arts/zee-bow.png",
+    "source" : "~/Pictures/zee-bow.png",
 	"padding" : { "top" : 3},
 	"width" : 31
   },
